@@ -121,11 +121,16 @@ export class Home {
   ];
 
   selectedCategoryTypes: string[] = [];
-  
+
   isCategoryDropdownOpen = false;
   isTypeDropdownOpen = false;
   selectedCategoryName = '';
   selectedTypeName = '';
+  activeTab = 'residential';
+
+  setActiveTab(tab: string) {
+    this.activeTab = tab;
+  }
 
   constructor(private eRef: ElementRef) {}
 
