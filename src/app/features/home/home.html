@@ -1,0 +1,647 @@
+<!-- Navbar -->
+<nav class="navbar container">
+  <div class="logo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M3 21l9-18 9 18M9 9l3 6 3-6" />
+    </svg>
+    <span>La Maison</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Properties</a></li>
+    <li><a href="#">Agents</a></li>
+  </ul>
+  <button class="btn-outline">Find A House</button>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <!-- Background Ambient Glows -->
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+
+  <div class="hero-content container">
+    <div class="hero-text">
+      <!-- Premium Eyebrow Badge -->
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">LA MAISON LUXURY PORTAL</span>
+      </div>
+
+      <h1>Find A House<br>That <span class="highlight-text">Suits You</span></h1>
+      <p>Want to find a home? We are ready to help you find<br>one that suits your lifestyle and needs</p>
+      
+      <!-- Premium Animated Button -->
+      <button class="btn-primary get-started">
+        <span>Get Started</span>
+        <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+
+      <!-- Glassmorphic Stats Panel -->
+      <div class="stats-panel">
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <h3>1,200<span>+</span></h3>
+            <p>Listed Properties</p>
+          </div>
+        </div>
+        
+        <div class="stat-divider"></div>
+        
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <h3>4,500<span>+</span></h3>
+            <p>Happy Customers</p>
+          </div>
+        </div>
+        
+        <div class="stat-divider"></div>
+        
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="7"></circle>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <h3>100<span>+</span></h3>
+            <p>Awards Won</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <!-- Using a modern building image from Unsplash -->
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
+      alt="Modern Apartment Building">
+    
+    <!-- Floating Glassmorphic Featured Listing Card -->
+    <div class="floating-listing-card">
+      <div class="listing-thumb" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=120&q=80')"></div>
+      <div class="listing-details">
+        <div class="listing-tag">FEATURED VILLA</div>
+        <h4 class="listing-title">Modern Luxury Villa</h4>
+        <div class="listing-meta">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Beverly Hills, CA</span>
+        </div>
+        <div class="listing-price">$4,850,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Bar -->
+<section class="search-bar-section container">
+  <div class="search-card">
+    <h3>Search for available services</h3>
+    <div class="search-fields">
+      <div class="field">
+        <label>Service Category</label>
+        <div class="custom-dropdown" [class.open]="isCategoryDropdownOpen" (click)="toggleCategoryDropdown($event)">
+          <div class="dropdown-selected">
+            <span [class.placeholder]="!selectedCategoryName">{{ selectedCategoryName || 'Select Category' }}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="dropdown-menu" *ngIf="isCategoryDropdownOpen">
+            <div class="dropdown-item" *ngFor="let cat of serviceCategories" [class.active]="selectedCategoryName === cat.name" (click)="selectCategory(cat.name, $event)">
+              {{cat.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Service Type</label>
+        <div class="custom-dropdown" [class.open]="isTypeDropdownOpen" (click)="toggleTypeDropdown($event)" [class.disabled]="selectedCategoryTypes.length === 0">
+          <div class="dropdown-selected">
+            <span [class.placeholder]="!selectedTypeName">{{ selectedTypeName || 'Select Service Type' }}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="dropdown-menu" *ngIf="isTypeDropdownOpen && selectedCategoryTypes.length > 0">
+            <div class="dropdown-item" *ngFor="let type of selectedCategoryTypes" [class.active]="selectedTypeName === type" (click)="selectType(type, $event)">
+              {{type}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-primary search-btn">Search Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- Our Services -->
+<section class="services-section container">
+  <div class="section-header">
+    <div class="header-text">
+      <span class="eyebrow">SERVICES</span>
+      <h2>Our Professional Services</h2>
+    </div>
+    <a href="#" class="explore-link">Explore All Services <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg></a>
+  </div>
+
+  <div class="services-grid">
+    <!-- Card 1: Home Services -->
+    <div class="service-card svc-blue"
+      style="--bg-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80')">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <div class="card-tag">HOME</div>
+        <h3 class="card-heading">Home Services</h3>
+        <p class="card-description">Expert AC repair, plumbing, electrical, and general handyman services.</p>
+        <a href="#" class="btn-card-action">
+          <span>Book Now</span>
+          <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2: Cleaning Services -->
+    <div class="service-card svc-teal"
+      style="--bg-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80')">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <div class="card-tag">CLEANING</div>
+        <h3 class="card-heading">Cleaning Services</h3>
+        <p class="card-description">Deep cleaning, kitchen, bathroom, and sofa/carpet sanitization.</p>
+        <a href="#" class="btn-card-action">
+          <span>Book Now</span>
+          <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3: Moving & Logistics -->
+    <div class="service-card svc-indigo"
+      style="--bg-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80')">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <div class="card-tag">LOGISTICS</div>
+        <h3 class="card-heading">Moving & Logistics</h3>
+        <p class="card-description">Hassle-free home shifting, office relocation, and transport.</p>
+        <a href="#" class="btn-card-action">
+          <span>Book Now</span>
+          <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 4: Business & Commercial Services -->
+    <div class="service-card svc-violet"
+      style="--bg-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80')">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <div class="card-tag">COMMERCIAL</div>
+        <h3 class="card-heading">Business & Commercial</h3>
+        <p class="card-description">Commercial facility management, corporate IT, and contract cleaning.</p>
+        <a href="#" class="btn-card-action">
+          <span>Book Now</span>
+          <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 5: Installation Services -->
+    <div class="service-card svc-orange"
+      style="--bg-image: url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=600&q=80')">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <div class="card-tag">INSTALLATION</div>
+        <h3 class="card-heading">Installation Services</h3>
+        <p class="card-description">TV mounting, smart home setup, CCTV, and network installations.</p>
+        <a href="#" class="btn-card-action">
+          <span>Book Now</span>
+          <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 6: On-Demand Delivery Services -->
+    <div class="service-card svc-rose"
+      style="--bg-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80')">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <div class="card-tag">DELIVERY</div>
+        <h3 class="card-heading">On-Demand Delivery</h3>
+        <p class="card-description">Fast local courier, food, grocery, and document delivery services.</p>
+        <a href="#" class="btn-card-action">
+          <span>Book Now</span>
+          <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 7: Retail & Errand Services -->
+    <div class="service-card svc-pink"
+      style="--bg-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80')">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <div class="card-tag">RETAIL</div>
+        <h3 class="card-heading">Retail & Errands</h3>
+        <p class="card-description">Personal shopping assistance, queue management, and bill payments.</p>
+        <a href="#" class="btn-card-action">
+          <span>Book Now</span>
+          <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 8: Specialized Cleaning Services (Advanced) -->
+    <div class="service-card svc-emerald"
+      style="--bg-image: url('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=600&q=80')">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <div class="card-tag">SPECIALIZED</div>
+        <h3 class="card-heading">Specialized Cleaning</h3>
+        <p class="card-description">Post-construction, industrial, and high-rise window deep cleaning.</p>
+        <a href="#" class="btn-card-action">
+          <span>Book Now</span>
+          <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 9: Pest Control Services -->
+    <div class="service-card svc-amber wide"
+      style="--bg-image: url('https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=600&q=80')">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <div class="card-tag">PEST CONTROL</div>
+        <h3 class="card-heading">Pest Control Services</h3>
+        <p class="card-description">Professional cockroach, termite, bed bug, and general fumigation services to keep your spaces safe, clean, and hygienic.</p>
+        <a href="#" class="btn-card-action">
+          <span>Book Now</span>
+          <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 10: Custom Solutions -->
+    <div class="service-card svc-custom wide"
+      style="--bg-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80')">
+      <div class="card-bg"></div>
+      <div class="card-content">
+        <div class="card-tag">CUSTOM SOLUTIONS</div>
+        <h3 class="card-heading">Need a custom solution?</h3>
+        <p class="card-description">Have unique business needs or large-scale project requirements? Our team of professional experts is ready to design and execute tailored service packages specific to your operations.</p>
+        <a href="#" class="btn-card-action">
+          <span>Get a Quote</span>
+          <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Resource Center Section -->
+<section class="resources-section">
+  <div class="container">
+    <div class="resources-header">
+      <h2>Resource Center</h2>
+      <p>Learn about everything from customer success stories, product info, to viewpoints from the core team.</p>
+    </div>
+
+    <!-- Hero Cards Row -->
+    <div class="resources-hero-row">
+      <!-- Card 1 -->
+      <div class="resources-hero-card"
+        style="background-image: linear-gradient(rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0.45)), url('https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=600&q=80')">
+        <div class="card-tag">WHITE PAPER</div>
+        <h3 class="card-heading">Understanding the Mobile Delivery Gap</h3>
+        <a href="#" class="btn-card-action">Read the White Paper</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="resources-hero-card dark-card"
+        style="background-image: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80')">
+        <div class="card-tag">CASE STUDY</div>
+        <h3 class="card-heading">Building the new Marketwatch app</h3>
+        <a href="#" class="btn-card-action">See the Case Study</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="resources-hero-card"
+        style="background-image: linear-gradient(rgba(107, 114, 128, 0.4), rgba(107, 114, 128, 0.5)), url('https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=600&q=80')">
+        <div class="card-tag">VIDEO</div>
+        <h3 class="card-heading">Using Web Components in Ionic (Polymer Con)</h3>
+        <a href="#" class="btn-card-action">Watch the video</a>
+      </div>
+    </div>
+
+    <!-- Tab Category Bar -->
+    <div class="resources-tab-bar">
+      <button class="tab-item active">
+        <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span>Featured</span>
+      </button>
+      <button class="tab-item">
+        <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        <span>Articles</span>
+      </button>
+      <button class="tab-item">
+        <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+          </polygon>
+        </svg>
+        <span>Case Studies</span>
+      </button>
+      <button class="tab-item">
+        <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+          <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+          <line x1="6" y1="6" x2="6.01" y2="6"></line>
+          <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+        <span>Webinars</span>
+      </button>
+      <button class="tab-item">
+        <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polygon points="10 8 16 12 10 16 10 8"></polygon>
+        </svg>
+        <span>Videos</span>
+      </button>
+    </div>
+
+    <!-- Featured Case Studies Header -->
+    <div class="resources-bottom-header">
+      <h3>Featured Case Studies</h3>
+      <a href="#" class="see-all-link">See all &rarr;</a>
+    </div>
+
+    <!-- Bottom Case Studies Grid -->
+    <div class="case-studies-grid">
+      <!-- Card A -->
+      <div class="case-study-card cs-purple"
+        style="background-image: linear-gradient(rgba(139, 92, 246, 0.85), rgba(139, 92, 246, 0.9)), url('https://images.unsplash.com/photo-1530182143223-c66af729f990?auto=format&fit=crop&w=600&q=80')">
+        <div class="cs-tag">CASE STUDY</div>
+        <h4 class="cs-title">Napa Group speeds up development</h4>
+        <a href="#" class="cs-action">READ NOW</a>
+      </div>
+
+      <!-- Card B -->
+      <div class="case-study-card cs-orange"
+        style="background-image: linear-gradient(rgba(245, 158, 11, 0.8), rgba(245, 158, 11, 0.85)), url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=600&q=80')">
+        <div class="cs-tag">CASE STUDY</div>
+        <h4 class="cs-title">Sworkit goes cross platform with Ionic</h4>
+        <a href="#" class="cs-action">READ NOW</a>
+      </div>
+
+      <!-- Card C -->
+      <div class="case-study-card cs-blue"
+        style="background-image: linear-gradient(rgba(37, 99, 235, 0.8), rgba(37, 99, 235, 0.85)), url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&q=80')">
+        <div class="cs-tag">CASE STUDY</div>
+        <h4 class="cs-title">Airbus takes to the skies with Ionic</h4>
+        <a href="#" class="cs-action">READ NOW</a>
+      </div>
+
+      <!-- Card D -->
+      <div class="case-study-card cs-lightblue"
+        style="background-image: linear-gradient(rgba(56, 189, 248, 0.8), rgba(56, 189, 248, 0.85)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80')">
+        <div class="cs-tag">CASE STUDY</div>
+        <h4 class="cs-title">Sense Corp accelerates the app lifecycle with Ionic</h4>
+        <a href="#" class="cs-action">READ NOW</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+  <!-- Background Grid Lines -->
+  <div class="testimonials-bg-lines">
+    <div class="bg-line"></div>
+    <div class="bg-line bg-line-accent-1"></div>
+    <div class="bg-line"></div>
+    <div class="bg-line"></div>
+    <div class="bg-line"></div>
+    <div class="bg-line"></div>
+    <div class="bg-line bg-line-accent-2"></div>
+    <div class="bg-line"></div>
+  </div>
+
+  <div class="testimonials-grid">
+    <!-- Column 1 -->
+    <div class="grid-col col-1">
+      <div class="card-placeholder"></div>
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="grid-col col-2">
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+    </div>
+
+    <!-- Column 3 -->
+    <div class="grid-col col-3">
+      <div class="card-placeholder"></div>
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+    </div>
+
+    <!-- Column 4 -->
+    <div class="grid-col col-4">
+      <div class="card-placeholder"></div>
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+    </div>
+
+    <!-- Column 5 -->
+    <div class="grid-col col-5">
+      <div class="card-placeholder"></div>
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+    </div>
+
+    <!-- Column 6 -->
+    <div class="grid-col col-6">
+      <div class="card-placeholder"></div>
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+    </div>
+
+    <!-- Column 7 -->
+    <div class="grid-col col-7">
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+      <div class="card-image-wrapper card-slanted">
+        <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+    </div>
+
+    <!-- Column 8 -->
+    <div class="grid-col col-8">
+      <div class="card-placeholder"></div>
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&h=400&q=80"
+          alt="Professional">
+      </div>
+    </div>
+  </div>
+
+  <!-- Central Content -->
+  <div class="testimonials-content container">
+    <span class="testimonials-badge">Testimonials</span>
+    <h2 class="testimonials-title">Trusted by leaders<br>from various industries</h2>
+    <p class="testimonials-subtitle">Learn why professionals trust our solutions to<br>complete their customer journeys.
+    </p>
+    <div class="testimonials-cta">
+      <a href="#" class="btn-success-stories">Read Success Stories &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="testimonial">
+      <div class="author">
+        <h3>Kevin Durant</h3>
+        <p>Founder, La Maison</p>
+      </div>
+      <div class="quote">
+        <span class="quote-mark">“</span>
+        <p>Our business is built off of close relationships and we are glad that we are able to share our positive real
+          estate experiences with ur clients.</p>
+      </div>
+    </div>
+
+    <div class="logos-section">
+      <div class="logo-item">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+          <line x1="8" y1="2" x2="8" y2="22"></line>
+          <line x1="16" y1="2" x2="16" y2="22"></line>
+        </svg>
+        <span>E Q U I N I X</span>
+      </div>
+      <div class="logo-item">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        <span>DIGITAL REALTY</span>
+      </div>
+      <div class="logo-item">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+          <line x1="8" y1="2" x2="8" y2="22"></line>
+          <line x1="16" y1="2" x2="16" y2="22"></line>
+        </svg>
+        <span>E Q U I N I X</span>
+      </div>
+      <div class="logo-item">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        <span>DIGITAL REALTY</span>
+      </div>
+    </div>
+  </div>
+</footer>
