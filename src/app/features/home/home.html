@@ -3,42 +3,44 @@
 
   <!-- Background Image Layer -->
   <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=80" alt="City Skyline" />
+    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=80"
+      alt="City Skyline" />
     <div class="hero-overlay"></div>
   </div>
 
   <!-- Transparent Overlay Navbar -->
   <nav class="navbar-overlay container">
     <div class="logo logo-white">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 21l9-18 9 18M9 9l3 6 3-6" />
-      </svg>
-      <span>La Maison</span>
+      <img src="network-movers-logo.png" alt="Network Movers" class="navbar-logo-img" />
     </div>
     <ul class="nav-links nav-links-white">
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Properties</a></li>
-      <li><a href="#">Agents</a></li>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+      <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+      <li><a routerLink="/services" routerLinkActive="active">Services</a></li>
     </ul>
     <div class="nav-actions">
       <div class="nav-phone">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l.95-1.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 15z"/>
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l.95-1.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 15z" />
         </svg>
         <span>+1 800-555-6789</span>
       </div>
-      <button class="btn-add-listing">Add Listing</button>
     </div>
   </nav>
 
   <!-- Central Hero Content -->
   <div class="hero-center">
 
+    <!-- Hero Title -->
+    <h1 class="hero-title">Your One-Stop Marketplace for <span class="highlight-text">Trusted Services</span></h1>
+
     <!-- Selector Tabs -->
     <div class="hero-tabs">
-      <button class="hero-tab active" (click)="setActiveTab('residential')" [class.active]="activeTab === 'residential'">Residential</button>
-      <button class="hero-tab" (click)="setActiveTab('commercial')" [class.active]="activeTab === 'commercial'">Commercial</button>
+      <button class="hero-tab active" (click)="setActiveTab('residential')"
+        [class.active]="activeTab === 'residential'">Residential</button>
+      <button class="hero-tab" (click)="setActiveTab('commercial')"
+        [class.active]="activeTab === 'commercial'">Commercial</button>
     </div>
 
     <!-- Unified Capsule Search Bar (keeping original dropdowns) -->
@@ -47,10 +49,13 @@
       <!-- Service Category Field -->
       <div class="capsule-field">
         <label class="capsule-label">SERVICE CATEGORY</label>
-        <div class="custom-dropdown capsule-dropdown" [class.open]="isCategoryDropdownOpen" (click)="toggleCategoryDropdown($event)">
+        <div class="custom-dropdown capsule-dropdown" [class.open]="isCategoryDropdownOpen"
+          (click)="toggleCategoryDropdown($event)">
           <div class="dropdown-selected capsule-selected">
             <span [class.placeholder]="!selectedCategoryName">{{ selectedCategoryName || 'Select Category' }}</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
           </div>
           <div class="dropdown-menu" *ngIf="isCategoryDropdownOpen">
             <div class="dropdown-item" *ngFor="let cat of serviceCategories"
@@ -66,11 +71,13 @@
       <!-- Service Type Field -->
       <div class="capsule-field">
         <label class="capsule-label">SERVICE TYPE</label>
-        <div class="custom-dropdown capsule-dropdown" [class.open]="isTypeDropdownOpen" (click)="toggleTypeDropdown($event)"
-          [class.disabled]="selectedCategoryTypes.length === 0">
+        <div class="custom-dropdown capsule-dropdown" [class.open]="isTypeDropdownOpen"
+          (click)="toggleTypeDropdown($event)" [class.disabled]="selectedCategoryTypes.length === 0">
           <div class="dropdown-selected capsule-selected">
             <span [class.placeholder]="!selectedTypeName">{{ selectedTypeName || 'Select Service Type' }}</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
           </div>
           <div class="dropdown-menu" *ngIf="isTypeDropdownOpen && selectedCategoryTypes.length > 0">
             <div class="dropdown-item" *ngFor="let type of selectedCategoryTypes"
@@ -92,7 +99,7 @@
     </div>
 
     <!-- Circular Category Shortcuts -->
-    <div class="category-shortcuts">
+    <!-- <div class="category-shortcuts">
       <div class="shortcut-item">
         <div class="shortcut-circle">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -140,7 +147,7 @@
         </div>
         <span>Installation</span>
       </div>
-    </div>
+    </div> -->
 
   </div>
 </section>
@@ -148,15 +155,20 @@
 <!-- Our Services -->
 <section class="services-section container">
   <div class="section-header">
-    <div class="header-text">
-      <span class="eyebrow">SERVICES</span>
-      <h2>Our Professional Services</h2>
+    <div class="section-header-left">
+      <div class="header-decor-line"></div>
+      <div class="header-text-block">
+        <span class="services-eyebrow">SERVICES</span>
+        <h2 class="services-title">Our <span class="primary-highlight">Professional Services</span></h2>
+      </div>
     </div>
-    <a href="#" class="explore-link">Explore All Services <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2">
+    <a href="#" class="explore-link">
+      <span>Explore All Services</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="5" y1="12" x2="19" y2="12"></line>
         <polyline points="12 5 19 12 12 19"></polyline>
-      </svg></a>
+      </svg>
+    </a>
   </div>
 
   <div class="services-grid">
@@ -515,12 +527,15 @@
       <span class="badge-dot"></span>
       <span class="badge-text">TESTIMONIALS</span>
     </div>
-    <h2 class="testimonials-title">Trusted by <span class="highlight-text">leaders</span><br>from various industries</h2>
-    <p class="testimonials-subtitle">Learn why professionals trust our solutions to<br>complete their customer journeys.</p>
+    <h2 class="testimonials-title">Trusted by <span class="highlight-text">leaders</span><br>from various industries
+    </h2>
+    <p class="testimonials-subtitle">Learn why professionals trust our solutions to<br>complete their customer journeys.
+    </p>
     <div class="testimonials-cta">
       <a href="#" class="btn-success-stories">
         <span>Read Success Stories</span>
-        <svg class="arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
@@ -529,54 +544,5 @@
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container footer-content">
-    <div class="testimonial">
-      <div class="author">
-        <h3>Kevin Durant</h3>
-        <p>Founder, La Maison</p>
-      </div>
-      <div class="quote">
-        <span class="quote-mark">“</span>
-        <p>Our business is built off of close relationships and we are glad that we are able to share our positive real
-          estate experiences with ur clients.</p>
-      </div>
-    </div>
-
-    <div class="logos-section">
-      <div class="logo-item">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-          <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
-          <line x1="8" y1="2" x2="8" y2="22"></line>
-          <line x1="16" y1="2" x2="16" y2="22"></line>
-        </svg>
-        <span>E Q U I N I X</span>
-      </div>
-      <div class="logo-item">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-          <polyline points="2 17 12 22 22 17"></polyline>
-          <polyline points="2 12 12 17 22 12"></polyline>
-        </svg>
-        <span>DIGITAL REALTY</span>
-      </div>
-      <div class="logo-item">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-          <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
-          <line x1="8" y1="2" x2="8" y2="22"></line>
-          <line x1="16" y1="2" x2="16" y2="22"></line>
-        </svg>
-        <span>E Q U I N I X</span>
-      </div>
-      <div class="logo-item">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-          <polyline points="2 17 12 22 22 17"></polyline>
-          <polyline points="2 12 12 17 22 12"></polyline>
-        </svg>
-        <span>DIGITAL REALTY</span>
-      </div>
-    </div>
-  </div>
-</footer>
+<!-- Shared Footer -->
+<app-footer></app-footer>

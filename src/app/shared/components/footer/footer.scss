@@ -1,0 +1,256 @@
+// ── Footer Tokens ───────────────────────────────────────────────────────────
+$primary:  #1d4ed8;
+$indigo:   #4f46e5;
+$accent:   #f59e0b;
+$dark:     #060b18;
+$muted:    rgba(255, 255, 255, 0.45);
+$white:    #ffffff;
+
+// ── Animations ──────────────────────────────────────────────────────────────
+@keyframes footerGlow {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.7; }
+}
+
+// ── Site Footer ─────────────────────────────────────────────────────────────
+.site-footer {
+  background: $dark;
+  color: $muted;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+
+  // Subtle ambient radial glows
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: footerGlow 6s ease-in-out infinite;
+  }
+
+  &::before {
+    width: 400px;
+    height: 400px;
+    top: -120px;
+    left: -100px;
+    background: radial-gradient(circle, rgba($indigo, 0.18) 0%, transparent 70%);
+  }
+
+  &::after {
+    width: 350px;
+    height: 350px;
+    bottom: -80px;
+    right: -80px;
+    background: radial-gradient(circle, rgba($accent, 0.1) 0%, transparent 70%);
+    animation-delay: 3s;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// ── Footer Grid ─────────────────────────────────────────────────────────────
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.3fr 1.2fr 1.2fr;
+  gap: 3.5rem;
+  padding-top: 5rem;
+  padding-bottom: 3.5rem;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+// ── Brand Column ────────────────────────────────────────────────────────────
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+
+  &__icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, $primary 0%, $indigo 100%);
+    color: $white;
+    font-size: 0.8rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.05em;
+    box-shadow: 0 6px 18px rgba($primary, 0.4);
+    flex-shrink: 0;
+  }
+
+  span {
+    font-size: 1rem;
+    font-weight: 700;
+    color: $white;
+    line-height: 1.2;
+  }
+}
+
+.footer-desc {
+  font-size: 0.875rem;
+  line-height: 1.85;
+  color: rgba($white, 0.42);
+  margin: 0 0 1.75rem;
+  max-width: 320px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 0.65rem;
+
+  a {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid rgba($white, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba($white, 0.45);
+    text-decoration: none;
+    background: rgba($white, 0.03);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background: $primary;
+      border-color: $primary;
+      color: $white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba($primary, 0.4);
+    }
+  }
+}
+
+// ── Shared Column ────────────────────────────────────────────────────────────
+.footer-heading {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $white;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid rgba($white, 0.07);
+  letter-spacing: 0.01em;
+}
+
+.footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-size: 0.875rem;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    color: rgba($white, 0.48);
+    line-height: 1.55;
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+  }
+}
+
+.footer-links {
+  li {
+    display: block;
+  }
+
+  a {
+    color: rgba($white, 0.48);
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.25s ease;
+    display: block;
+    padding-left: 0;
+    position: relative;
+
+    &::before {
+      content: '›';
+      position: absolute;
+      left: -12px;
+      opacity: 0;
+      color: $accent;
+      transition: opacity 0.2s, left 0.2s;
+    }
+
+    &:hover {
+      color: $white;
+      padding-left: 6px;
+
+      &::before {
+        opacity: 1;
+        left: -6px;
+      }
+    }
+  }
+
+  .footer-link--highlight {
+    color: $accent;
+    font-weight: 600;
+
+    &:hover { color: lighten($accent, 10%); }
+  }
+}
+
+// ── Bottom Bar ───────────────────────────────────────────────────────────────
+.footer-bottom {
+  border-top: 1px solid rgba($white, 0.06);
+  position: relative;
+  z-index: 1;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: 0.8rem;
+    color: rgba($white, 0.28);
+
+    p { margin: 0; }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 0.75rem;
+      text-align: center;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 2rem;
+
+    a {
+      color: rgba($white, 0.32);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      font-weight: 500;
+
+      &:hover { color: $accent; }
+    }
+  }
+}
